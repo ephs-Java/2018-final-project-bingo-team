@@ -12,3 +12,11 @@ I would like to connect you with a programmer from the wild.
 So, I need to know what you are thinking, and have a paragraph description of your project to share.
 We have a draft to match mentors and groups, so make it compelling.
 
+                                 /////// Goal /////////
+	
+	Our team's goal for our final project is to create a fun and intuitive bingo game.  
+	This game will incorporate an int array being filled with an either random numbers
+	or the user creating their own board.  From there, we will "grab" random numbers from
+	a generator and fill in the user's board.  We will then determine if the user has 
+	a bingo.   That is our initial goal.  To go above and beyond, we would consider 
+	users and storing their high score and their name.  
