@@ -28,6 +28,7 @@ public class Game {
 					board [row][col] = makeRandom(60);
 				
 			}
+			board[2][2] = 0; //free space
 		}
 			
 	}
@@ -61,7 +62,6 @@ public class Game {
 		}
 	}
 	
-	
 	public static int makeRandom(int num) {
 		Random r = new Random();
 		return r.nextInt(15) + num;
@@ -74,41 +74,21 @@ public class Game {
 	
 	public boolean isBingo () {
 		// checks the horizontal bingos //
-		for (int col = 0; col < 5; col++) {
+		for (int i = 0; i < 5; i++) {
 			
-			if ( this.board [0][col] == 0)
+			if ( horzBingo(i) ) {
 				return true;
-			
-			else if ( this.board [1][col] == 0)
-				return true;
-			
-			else if ( this.board [2][col] == 0)
-				return true;
-			
-			else if ( this.board [3][col] == 0)
-				return true;
-			
-			else if ( this.board [4][col] == 0)
-				return true;
+			}
+				
 		}
 		
 		// checks the vertical bingos //
-		for (int row = 0; row < 5; row++) {
+		for (int i = 0; i < 5; i++) {
 			
-			if ( this.board [row][0] == 0)
+			if ( vertBingo(i) ) {
 				return true;
-			
-			else if ( this.board [row][1] == 0)
-				return true;
-			
-			else if ( this.board [row][2] == 0)
-				return true;
-			
-			else if ( board [row][3] == 0)
-				return true;
-			
-			else if ( board [row][4] == 0)
-				return true;
+			}
+				
 		}
 		// checks the left to right diagonal bingos //
 		if ( board [0][0] == 0
@@ -131,6 +111,30 @@ public class Game {
 		}
 		
 		return false;
+	}
+	
+	public boolean horzBingo (int row) {
+		boolean bool = true;
+		
+		for (int col = 0; col < 5; col++) {
+			
+			if ( this.board [row][col] != 0 )  
+				return false;
+		}
+		
+		
+		return bool; 
+	}
+	
+	public boolean vertBingo (int col) {
+		boolean bool = true;
+		
+		for (int row = 0; row < 5; row++) {
+			
+			if ( this.board [row][col] != 0 )  
+				return false;
+		}
+		return bool; 
 	}
 
 }
