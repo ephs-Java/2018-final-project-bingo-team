@@ -6,14 +6,15 @@ import java.util.Random;
 public class Game {
 	
 	ArrayList<Integer> guesses; 
-	int [] [] board = new int [5][5];
+	int [][] board = new int [5][5];
 	int guess;
 	
 	public Game () {
+		////// Uses 2D int Array /////
 		
-		for (int row = 0; row < board.length; row++) {
+		for (int row = 0; row < 5; row++) {
 			
-			for (int col = 0; col < board[0].length; col++) {
+			for (int col = 0; col < 5; col++) {
 				
 				if (col == 0) 
 					board [row][col] = makeRandom(1);
@@ -29,7 +30,6 @@ public class Game {
 			}
 		}
 			
-		
 	}
 	
 	public void print() {
@@ -39,28 +39,37 @@ public class Game {
 		System.out.println("|-----------------------------------------------|");
 	
 		
-		for (int row = 0; row < board.length; row++) {
+		for (int row = 0; row < 5; row++) {
 			
-			for (int col = 0; col < board[0].length; col++) {
+			for (int col = 0; col < 5; col++) {
 				
-				if (col != 4) {
+				if (col == 0) {
 					
-					System.out.print("\t" + board [row][col]);
+					System.out.print("\t" + board[row][col]);
+					
+				} else if (col % 4 == 0) {
+					
+					System.out.print("\t" + board[row][col] + "\n");
 					
 				} else {
 					
-					System.out.print("\t" + board [row][col] + "\n");
-					
+					System.out.print("\t" + board[row][col]);
 				}
+				
+				
 			}
 		}
-		
 	}
 	
 	
 	public static int makeRandom(int num) {
 		Random r = new Random();
 		return r.nextInt(15) + num;
+	}
+	
+	public static int makeRandom() {
+		Random r = new Random();
+		return r.nextInt(99) + 1;
 	}
 	
 	public boolean isBingo () {
