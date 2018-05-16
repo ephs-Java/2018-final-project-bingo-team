@@ -25,9 +25,9 @@ public class Game {
 	
 	public void print() {
 		
-		System.out.println("|-----------------------------------------------|");
+		System.out.println("|------------------------------------------------|");
 		System.out.println("|\tB.\tI.\tN.\tG.\tO.\t|");
-		System.out.println("|-----------------------------------------------|");
+		System.out.println("|------------------------------------------------|");
 	
 		
 		for (int row = 0; row < board.length; row++) {
@@ -50,7 +50,7 @@ public class Game {
 	
 	public static int makeRandom() {
 		Random r = new Random();
-		return r.nextInt(99)+1;
+		return r.nextInt(99);
 	}
 
 }
