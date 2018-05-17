@@ -16,6 +16,7 @@ public class Runner {
 		
 		frame.setLayout(new GridLayout(6, 5));
 		
+		// fills gridLayout with bingo board //
 		for(int row = 0; row < game.board.length; row++) {
 			
 			for (int col = 0; col < game.board.length; col++) {
@@ -39,15 +40,7 @@ public class Runner {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-		
 
-		
-		
-		
-		
-		
-
-		
 	}
 	
 }
