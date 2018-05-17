@@ -2,6 +2,7 @@ package bingo;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
 	
@@ -33,34 +34,34 @@ public class Game {
 			
 	}
 	
-	public void print() {
-		
-		System.out.println("|-----------------------------------------------|");
-		System.out.println("|\tB.\tI.\tN.\tG.\tO.\t|");
-		System.out.println("|-----------------------------------------------|");
-	
-		
-		for (int row = 0; row < 5; row++) {
-			
-			for (int col = 0; col < 5; col++) {
-				
-				if (col == 0) {
-					
-					System.out.print("\t" + board[row][col]);
-					
-				} else if (col % 4 == 0) {
-					
-					System.out.print("\t" + board[row][col] + "\n");
-					
-				} else {
-					
-					System.out.print("\t" + board[row][col]);
-				}
-				
-				
-			}
-		}
-	}
+//	public void print() {
+//		
+//		System.out.println("|-----------------------------------------------|");
+//		System.out.println("|\tB.\tI.\tN.\tG.\tO.\t|");
+//		System.out.println("|-----------------------------------------------|");
+//	
+//		
+//		for (int row = 0; row < 5; row++) {
+//			
+//			for (int col = 0; col < 5; col++) {
+//				
+//				if (col == 0) {
+//					
+//					System.out.print("\t" + board[row][col]);
+//					
+//				} else if (col % 4 == 0) {
+//					
+//					System.out.print("\t" + board[row][col] + "\n");
+//					
+//				} else {
+//					
+//					System.out.print("\t" + board[row][col]);
+//				}
+//				
+//				
+//			}
+//		}
+//	}
 	
 	public static int makeRandom(int num) {
 		Random r = new Random();
@@ -136,5 +137,89 @@ public class Game {
 		}
 		return bool; 
 	}
+	
+	public void checkBoard () {
+		
+		boolean wantPlay = true;
+		// Prints initial board // 
+//		System.out.println("Here is your board !!\n");
+//		this.print();
+		
+		while ( !this.isBingo() && wantPlay) {
 
+			
+			// Has user start and stop game //
+			boolean test = false;
+			
+//			System.out.println("\nPress enter to roll another number");
+			Scanner s = new Scanner(System.in);
+			
+			String user = s.nextLine();
+			
+			if (! user.equals("quit") ) {
+			
+				
+			}
+			
+			
+			// Guesses the number and sets board to zero //
+			int guess = makeRandom();
+			
+			for (int row = 0; row < this.board.length; row++) {
+				
+				for (int col = 0; col < this.board[0].length; col++) {
+					
+					if (this.board[row][col] == guess) {
+						
+						this.board[row][col] = 0; 
+						test = true;
+					
+					}	
+				}
+				
+			}
+			
+			if (test) {
+//				System.out.println("Yay your board has a " + guess);
+			} else {
+//				System.out.println("Sorry your board doesn't have a " + guess);
+			}
+			
+//			this.print();
+	
+			System.out.println();
+			System.out.println();
+
+		
+		}
+	}
+	
+	public void endGame() {
+
+		
+		// Checks if they got a bingo again //
+		if ( this.isBingo() ) {
+			System.out.println("Congrats you got a bingo!");
+			System.out.println("Would you like to play again? (y/n)");
+		}
+		
+		// Asks the user if they want to play again //
+		Scanner keyboard = new Scanner (System.in);
+		String s = keyboard.nextLine();
+		s.toLowerCase();
+		
+		// Either starts new game or ends it //
+		if (s.equals ("y") ) {
+			
+			Game newGame = new Game();
+			this.checkBoard();
+			this.endGame();
+			
+		} else if ( s.equals("n") ) {
+			System.out.println("Have a nice day!");	
+		} else { 
+			System.out.println("Please enter a valid letter");	
+		}
+	}
+	
 }
