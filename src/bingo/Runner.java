@@ -21,20 +21,21 @@ public class Runner {
 			
 			for (int col = 0; col < game.board.length; col++) {
 				
-				frame.add( new JLabel(String.valueOf(game.board[row][col]) ) );
-				
+				JLabel newLabel = new JLabel(String.valueOf(game.board[row][col]));
+				frame.add( newLabel );
+				newLabel.setHorizontalAlignment(JLabel.CENTER);
 			}
+			
 			
 		}
 		
 		JLabel buttonOne = new JLabel("");
-		JButton button = new JButton("New Number");
+		JButton button = new JButton("Roll");
 		JLabel buttonTwo = new JLabel("");
 		
 		frame.add(buttonOne);
 		frame.add(buttonTwo);
 		frame.add(button);
-		
 		
 		frame.setSize(500,500);
 		frame.setVisible(true);
