@@ -10,6 +10,7 @@ public class Game {
 	int [][] board = new int [5][5];
 	int guess;
 	int ranNum;
+	int test;
 	
 	public Game () {
 		////// Uses 2D int Array /////

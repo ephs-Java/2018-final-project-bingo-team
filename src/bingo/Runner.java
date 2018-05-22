@@ -25,6 +25,7 @@ public class Runner {
 //		frame.add(title);
 //		frame.add(new JLabel(""));
 //		frame.add(new JLabel(""));
+//		Test
 		
 		// fills gridLayout with bingo board //
 		for(int row = 0; row < game.board.length; row++) {
@@ -39,7 +40,7 @@ public class Runner {
 			
 		}
 		
-		JLabel buttonOne = new JLabel("");
+		JLabel buttonOne = new JLabel("Bing");
 		JButton button = new JButton("Roll");
 		JLabel buttonTwo = new JLabel("");
 		
