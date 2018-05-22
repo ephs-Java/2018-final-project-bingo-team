@@ -15,6 +15,14 @@ public class Runner {
 		JFrame frame = new JFrame("Bingo");
 		
 		frame.setLayout(new GridLayout(6, 5));
+
+//		JLabel title = new JLabel("Bingo Game");
+//
+//		frame.add(new JLabel(""));
+//		frame.add(new JLabel(""));
+//		frame.add(title);
+//		frame.add(new JLabel(""));
+//		frame.add(new JLabel(""));
 		
 		// fills gridLayout with bingo board //
 		for(int row = 0; row < game.board.length; row++) {
