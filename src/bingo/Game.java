@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Game {
 
+	//My test for commit
+	int testCommit;
 	ArrayList<Integer> guesses = new ArrayList<Integer>();
 	ArrayList<Integer> holdNums = new ArrayList<Integer>();
 	int[][] board = new int[5][5];

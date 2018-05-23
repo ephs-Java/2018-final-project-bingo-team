@@ -11,6 +11,8 @@ public class Runner {
 	public static JPanel p;
 
 	public static void main(String[] args) {
+		
+		int testComet;
 
 		Game game = new Game();
 
