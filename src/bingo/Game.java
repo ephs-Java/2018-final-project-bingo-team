@@ -9,7 +9,7 @@ public class Game {
 	ArrayList<Integer> guesses; 
 	int [][] board = new int [5][5];
 	int guess;
-	int ranNum;
+	private int ranNum;
 	int test;
 	
 	public Game () {
@@ -72,7 +72,7 @@ public class Game {
 	
 	public static int makeRandom() {
 		Random r = new Random();
-		return r.nextInt(99) + 1;
+		return r.nextInt(5) + 1;
 	}
 	
 	public boolean isBingo () {
@@ -145,7 +145,7 @@ public class Game {
 	public void checkBoard () {
 			
 			// Guesses the number and sets board to zero //
-			 this.guess = makeRandom();
+			guess = makeRandom();
 			
 			for (int row = 0; row < this.board.length; row++) {
 				
@@ -163,9 +163,12 @@ public class Game {
 
 		}
 	}
+	public int getGuess() {
+		return guess;
+	}
 	
 	public void getRandom () {
-		ranNum = makeRandom();
+		guess = makeRandom();
 	}
 	
 	public void endGame() {

@@ -7,27 +7,38 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Runner {
+	
+	public static JPanel p;
 
 	public static void main(String[] args) {
 		
 		Game game = new Game();
-//		game.checkBoard();
-//		game.endGame();
 		
 		JFrame frame = new JFrame("Bingo");
 		
-		frame.setLayout(new GridLayout(6, 5));
-
-//		JLabel title = new JLabel("Bingo Game");
-//
-//		frame.add(new JLabel(""));
-//		frame.add(new JLabel(""));
-//		frame.add(title);
-//		frame.add(new JLabel(""));
-//		frame.add(new JLabel(""));
-//		Test
 		
-		// fills gridLayout with bingo board //
+		JPanel p = new JPanel(new GridLayout(6,5));
+		
+		for(int row = 0; row < game.board.length; row++) {
+			
+			for (int col = 0; col < game.board.length; col++) {
+				
+				JLabel newLabel = new JLabel(String.valueOf(game.board[row][col]));
+				p.add( newLabel );
+				newLabel.setHorizontalAlignment(JLabel.CENTER);
+			}	
+		}
+		
+		
+		
+		
+//		game.checkBoard();
+//		game.endGame();
+	/*	
+		JFrame frame = new JFrame("Bingo");
+		
+		frame.setLayout(new GridLayout(6, 5));
+		
 		for(int row = 0; row < game.board.length; row++) {
 			
 			for (int col = 0; col < game.board.length; col++) {
@@ -35,11 +46,11 @@ public class Runner {
 				JLabel newLabel = new JLabel(String.valueOf(game.board[row][col]));
 				frame.add( newLabel );
 				newLabel.setHorizontalAlignment(JLabel.CENTER);
-			}
-			
-			
+			}	
 		}
-		
+		*/
+
+//
 		JLabel buttonOne = new JLabel("Bing");
 		JButton button = new JButton("Roll");
 		JLabel buttonTwo = new JLabel("");
@@ -48,32 +59,53 @@ public class Runner {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+		    
+			//  p.removeAll();
 				
 				game.checkBoard();
-//				clearBoard(frame);
+				
+				buttonOne.setText(String.valueOf(game.getGuess()));
+				
+				p.removeAll();
+				
+				
+				
 				for(int row = 0; row < game.board.length; row++) {
 					
 					for (int col = 0; col < game.board.length; col++) {
+							
+						JLabel newLabel = new JLabel(String.valueOf(game.board[row][col]));
+						p.add( newLabel );
+						newLabel.setHorizontalAlignment(JLabel.CENTER);
 						
-						frame.add( new JLabel(String.valueOf(game.board[row][col]) ) );
-						
+							
+						}
 					}
+				
+				p.add(buttonOne);
+				p.add(buttonTwo);
+				p.add(button);
+				frame.add(p);
+				
 				}
 				
-			}
-		};
+				
+				
+				
+			};
+		
 		
 		button.addActionListener(b1Event);
 		
-		frame.add(buttonOne);
-		frame.add(buttonTwo);
-		frame.add(button);
+		p.add(buttonOne);
+		p.add(buttonTwo);
+		p.add(button);
+		frame.add(p);
 		
 		frame.setSize(500,500);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-
 	}
 	
 }
