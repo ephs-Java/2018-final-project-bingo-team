@@ -6,29 +6,45 @@ import java.util.Scanner;
 
 public class Game {
 	
-	ArrayList<Integer> guesses; 
+	ArrayList<Integer> guesses = new ArrayList<Integer>(); 
+	ArrayList<Integer> holdNums = new ArrayList<Integer>();
 	int [][] board = new int [5][5];
 	int guess;
+	int roll;
 	private int ranNum;
 	int test;
 	
-	public Game () {
+	public Game () {		
+		
 		////// Uses 2D int Array /////
 		
 		for (int row = 0; row < 5; row++) {
 			
 			for (int col = 0; col < 5; col++) {
 				
-				if (col == 0) 
-					board [row][col] = makeRandom(1);
-				else if (col == 1)
-					board [row][col] = makeRandom(15);
-				else if (col == 2)
-					board [row][col] = makeRandom(30);
-				else if (col == 3)
-					board [row][col] = makeRandom(45);
-				else if (col == 4)
-					board [row][col] = makeRandom(60);
+				
+				
+				if (col == 0) { 
+					dupTest(1,holdNums);
+					board [row][col] = guess;
+					
+				}
+				else if (col == 1) {
+					dupTest(15,holdNums);
+					board [row][col] = guess;
+				}
+				else if (col == 2) {
+					dupTest(30,holdNums);
+					board [row][col] = guess;
+				}
+				else if (col == 3) {
+					dupTest(45,holdNums);
+					board [row][col] = guess;
+				}
+				else if (col == 4) {
+					dupTest(60,holdNums);
+					board [row][col] = guess;
+				}
 				
 			}
 			board[2][2] = 0; //free space
@@ -72,7 +88,18 @@ public class Game {
 	
 	public static int makeRandom() {
 		Random r = new Random();
-		return r.nextInt(5) + 1;
+		return r.nextInt(99) + 1;
+	}
+	
+	//Continues rolling a random number until a new one is rolled and added to list
+	public void dupTest(int num, ArrayList<Integer> list) {
+		guess = makeRandom(num);
+		
+		while(checkDup(holdNums) == false) {
+			guess = makeRandom(num);
+		}
+		
+		list.add(guess);
 	}
 	
 	public boolean isBingo () {
@@ -140,13 +167,25 @@ public class Game {
 		return bool; 
 	}
 	
+	//Checks for duplicates in the list
+	public boolean checkDup(ArrayList<Integer> list) {
+		for (Integer item: list) {
+			if (guess == item) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
-	
+	//Check board for rolled numbers
 	public void checkBoard () {
 			
 			// Guesses the number and sets board to zero //
 			guess = makeRandom();
+			dupTest(85,guesses);
 			
+			
+			//Checking part of the method
 			for (int row = 0; row < this.board.length; row++) {
 				
 				for (int col = 0; col < this.board[0].length; col++) {
@@ -158,9 +197,6 @@ public class Game {
 					
 					}	
 				}
-				
-
-
 		}
 	}
 	public int getGuess() {

@@ -59,16 +59,12 @@ public class Runner {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		    
-			//  p.removeAll();
 				
 				game.checkBoard();
 				
 				buttonOne.setText(String.valueOf(game.getGuess()));
 				
 				p.removeAll();
-				
-				
 				
 				for(int row = 0; row < game.board.length; row++) {
 					
