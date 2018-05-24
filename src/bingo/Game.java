@@ -43,9 +43,9 @@ public class Game {
 				}
 
 			}
-			board[2][2] = 0; // free space
+			
 		}
-
+		board[2][2] = 0; // free space
 	}
 
 	// public void print() {
@@ -201,29 +201,8 @@ public class Game {
 
 	public void endGame() {
 
-		// Checks if they got a bingo again //
-		if (this.isBingo()) {
-			System.out.println("Congrats you got a bingo!");
-			System.out.println("Would you like to play again? (y/n)");
-		}
+		Game newGame = new Game();
 
-		// Asks the user if they want to play again //
-		Scanner keyboard = new Scanner(System.in);
-		String s = keyboard.nextLine();
-		s.toLowerCase();
 
-		// Either starts new game or ends it //
-		if (s.equals("y")) {
-
-			Game newGame = new Game();
-			this.checkBoard();
-			this.endGame();
-
-		} else if (s.equals("n")) {
-			System.out.println("Have a nice day!");
-		} else {
-			System.out.println("Please enter a valid letter");
-		}
 	}
-
 }
