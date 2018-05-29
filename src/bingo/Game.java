@@ -17,65 +17,8 @@ public class Game {
 	int test;
 
 	public Game() {
-
-		////// Uses 2D int Array /////
-
-		for (int row = 0; row < 5; row++) {
-
-			for (int col = 0; col < 5; col++) {
-
-				if (col == 0) {
-					dupTest(1, holdNums);
-					board[row][col] = guess;
-
-				} else if (col == 1) {
-					dupTest(15, holdNums);
-					board[row][col] = guess;
-				} else if (col == 2) {
-					dupTest(30, holdNums);
-					board[row][col] = guess;
-				} else if (col == 3) {
-					dupTest(45, holdNums);
-					board[row][col] = guess;
-				} else if (col == 4) {
-					dupTest(60, holdNums);
-					board[row][col] = guess;
-				}
-
-			}
-			
-		}
-		board[2][2] = 0; // free space
+		createBoard();
 	}
-
-	// public void print() {
-	//
-	// System.out.println("|-----------------------------------------------|");
-	// System.out.println("|\tB.\tI.\tN.\tG.\tO.\t|");
-	// System.out.println("|-----------------------------------------------|");
-	//
-	//
-	// for (int row = 0; row < 5; row++) {
-	//
-	// for (int col = 0; col < 5; col++) {
-	//
-	// if (col == 0) {
-	//
-	// System.out.print("\t" + board[row][col]);
-	//
-	// } else if (col % 4 == 0) {
-	//
-	// System.out.print("\t" + board[row][col] + "\n");
-	//
-	// } else {
-	//
-	// System.out.print("\t" + board[row][col]);
-	// }
-	//
-	//
-	// }
-	// }
-	// }
 
 	public static int makeRandom(int num) {
 		Random r = new Random();
@@ -169,7 +112,7 @@ public class Game {
 	// Check board for rolled numbers
 	public void checkBoard() {
 
-		// Guesses the number and sets board to zero //
+	// Guesses the number and sets board to zero //
 		guess = makeRandom();
 		while(checkDup(guesses) == false) {
 			guess = makeRandom();
@@ -177,7 +120,7 @@ public class Game {
 		
 		guesses.add(guess);
 
-		// Checking part of the method
+	// Checking part of the method
 		for (int row = 0; row < this.board.length; row++) {
 
 			for (int col = 0; col < this.board[0].length; col++) {
@@ -200,9 +143,39 @@ public class Game {
 	}
 
 	public void endGame() {
+		guesses.clear();
+		holdNums.clear();
+		createBoard();
+	}
+	
+	public void createBoard() {
+		////// Uses 2D int Array /////
 
-		Game newGame = new Game();
+		for (int row = 0; row < 5; row++) {
 
+			for (int col = 0; col < 5; col++) {
 
+				if (col == 0) {
+					dupTest(1, holdNums);
+					this.board[row][col] = guess;
+
+				} else if (col == 1) {
+					dupTest(15, holdNums);
+					this.board[row][col] = guess;
+				} else if (col == 2) {
+					dupTest(30, holdNums);
+					this.board[row][col] = guess;
+				} else if (col == 3) {
+					dupTest(45, holdNums);
+					this.board[row][col] = guess;
+				} else if (col == 4) {
+					dupTest(60, holdNums);
+					this.board[row][col] = guess;
+				}
+
+			}
+			
+		}
+		this.board[2][2] = 0; // free space
 	}
 }
